@@ -1,21 +1,51 @@
-#include <stdio.h>
+#include "main.h"
 /**
- * main - entry
+ * print_times_table - prints times table up to param
  *
- * Return: 0
+ * @n: the number treated
+ *
+ * Return: number matrix
  */
-int main(void)
+void print_times_table(int n)
 {
-	int i, z = 0;
+	int x, y, z;
 
-	while (i < 1024)
+	if (n >= 0 && n <= 14)
 	{
-		if ((i % 3 == 0) || (i % 5 == 0))
+		for (x = 0; x <= n; x++)
 		{
-			z += i;
+			for (y = 0; y <= n; y++)
+			{
+				z = x * y;
+				if (x > 99)
+				{
+					_putchar(',');
+					_putchar(32);
+					_putchar((z / 100) + '0');
+					_putchar(((z / 10) % 10) + '0');
+					_putchar((z % 10) + '0');
+				}
+				else if (z > 9)
+				{
+					_putchar(',');
+					_putchar(32);
+					_putchar(32);
+					_putchar(((z / 10) % 10) + '0');
+					_putchar((z % 10) + '0');
+				}
+				else
+				{
+					if (y != 0)
+					{
+						_putchar(',');
+						_putchar(32);
+						_putchar(32);
+						_putchar(32);
+					}
+					_putchar(z + '0');
+				}
+			}
+			_putchar('\n');
 		}
-		i++;
 	}
-	printf("%d\n", z);
-	return (0);
 }
